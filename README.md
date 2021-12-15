@@ -1,0 +1,3 @@
+## FoxBlog
+
+### Built with rust
