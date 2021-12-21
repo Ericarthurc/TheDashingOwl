@@ -16,6 +16,7 @@ use std::io;
 use tower::ServiceBuilder;
 use tower_http::services::fs::{ServeDir, ServeFileSystemResponseBody};
 
+mod errors;
 mod handlers;
 mod parsers;
 
