@@ -1,6 +1,6 @@
 [package]
 name = "rust-markdown-parser"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -19,3 +19,5 @@ tracing = "0.1"
 tracing-subscriber = { version="0.3", features = ["env-filter"] }
 http = "0.2.5"
 http-body = "0.4.4"
+chrono = "0.4"
+futures-lite = "1.12.0"

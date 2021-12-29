@@ -1,5 +1,6 @@
 use async_fs;
-use std::fs;
+use chrono::NaiveDate;
+use futures_lite::stream::StreamExt;
 
 use crate::errors::AppError;
 
@@ -19,9 +20,9 @@ pub async fn get_file(file_name: &str) -> Result<String, AppError> {
 pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
     let mut meta_vec: Vec<Meta> = vec![];
 
-    let files = fs::read_dir("./markdown")?;
+    let mut files = async_fs::read_dir("./markdown").await?;
 
-    for file in files {
+    while let Some(file) = files.next().await {
         meta_vec.push(
             meta_parser(
                 file.unwrap()
@@ -36,7 +37,11 @@ pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
         );
     }
 
-    meta_vec.sort_by(|a, b| a.date.cmp(&b.date));
+    meta_vec.sort_by(|a, b| {
+        let a_date = NaiveDate::parse_from_str(&a.date, "%B %d, %Y").unwrap();
+        let b_date = NaiveDate::parse_from_str(&b.date, "%B %d, %Y").unwrap();
+        b_date.cmp(&a_date)
+    });
 
     Ok(meta_vec)
 }
