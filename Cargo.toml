@@ -1,6 +1,6 @@
 [package]
 name = "rust-markdown-parser"
-version = "0.4.0"
+version = "0.4.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -11,7 +11,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 axum = "0.4.2"
 comrak = "0.12.1"
-askama = "0.10.5"
+askama = "0.11.0"
 tower = { version = "0.4.11", features = ["full"] }
 tower-http = { version = "0.2.0", features = ["fs", "trace"] }
 async-fs = "1.5.0"
