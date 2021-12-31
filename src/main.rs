@@ -1,6 +1,5 @@
 use axum::{
     http::{Response, StatusCode},
-    response::Redirect,
     routing::{get, get_service},
     Router,
 };
@@ -8,6 +7,7 @@ use std::net::SocketAddr;
 
 use crate::handlers::{
     blog::{blog_handler, blog_index_handler},
+    index_handler,
     series::{series_handler, series_index_handler},
 };
 
@@ -57,10 +57,7 @@ async fn main() {
                 },
             ),
         )
-        .route(
-            "/",
-            get(|| async { Redirect::to("/blog".parse().unwrap()) }),
-        )
+        .route("/", get(index_handler))
         .nest("/blog", blog_routes)
         .nest("/series", series_routes);
 

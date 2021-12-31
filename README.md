@@ -1,4 +1,4 @@
-## FoxBlog
+## The Dashing Owl
 
 ### Built with rust
 

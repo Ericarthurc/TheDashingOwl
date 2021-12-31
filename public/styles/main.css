@@ -1,7 +1,8 @@
 :root {
   --html-color: #fff;
-  --background-color: #1e202a;
-  --navbar-background: #171921;
+  --background-color: #cdb694;
+  --navbar-background: #ae944c;
+  --navbar-border: #1d0e0e;
   --navbar-link-color: #fff;
   --navbar-link-hover-color: #005ae2;
   --main-header-color: #005ae2;
@@ -24,7 +25,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   -webkit-tap-highlight-color: transparent;
   background-color: var(--background-color);
   color: var(--html-color);
@@ -42,12 +43,27 @@ body {
   text-rendering: geometricPrecision;
 }
 
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 5% 0%;
+  align-items: center;
+}
 .navbar {
   display: flex;
+  height: 35px;
+  width: 100%;
+  max-width: 575px;
+  background: var(--navbar-background);
+  border-radius: 0.2rem;
+  box-shadow: rgb(0 0 0 / 15%) 0px 5px 10px 0px;
+  align-items: center;
+  justify-content: center;
+  /* display: flex;
   justify-content: center;
   padding: 10px 0;
   background: var(--navbar-background);
-  box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px;
+  box-shadow: rgb(0 0 0/ 15%) 0px 5px 10px 0px; */
 }
 
 .navbar-link {

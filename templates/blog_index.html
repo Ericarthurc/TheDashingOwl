@@ -1,9 +1,7 @@
 {% extends "partials/head.html" %} {% block title %}Hey{% endblock %} {% block
-head %}
-<script src="/js/highlight.min.js"></script>
-{% endblock %} {% block content %} {% include"includes/navbar.html" %}
+head %} {% endblock %} {% block content %} {% include"includes/navbar.html" %}
 <div class="main-container">
-  <p class="main-header">Wildwood Tech Posts</p>
+  <p class="main-header">Blog Posts</p>
   <ul class="index-list">
     {% for blog in blog_index %}
     <li>
