@@ -6,8 +6,8 @@ use axum::{
 use std::net::SocketAddr;
 
 use crate::handlers::{
+    about::about_handler,
     blog::{blog_handler, blog_index_handler},
-    index_handler,
     series::{series_handler, series_index_handler},
 };
 
@@ -22,10 +22,6 @@ mod parsers;
 
 #[tokio::main]
 async fn main() {
-    let blog_routes = Router::new()
-        .route("/", get(blog_index_handler))
-        .route("/:blog", get(blog_handler));
-
     let series_routes = Router::new()
         .route("/", get(series_index_handler))
         .route("/:series", get(series_handler));
@@ -57,9 +53,10 @@ async fn main() {
                 },
             ),
         )
-        .route("/", get(index_handler))
-        .nest("/blog", blog_routes)
-        .nest("/series", series_routes);
+        .route("/", get(blog_index_handler))
+        .route("/blog/:blog", get(blog_handler))
+        .nest("/series", series_routes)
+        .route("/about", get(about_handler));
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 4000));
     println!("Server: {}", addr);

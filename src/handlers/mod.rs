@@ -5,8 +5,7 @@ use axum::{
     response::{Html, IntoResponse, Response},
 };
 
-use crate::errors::AppError;
-
+pub mod about;
 pub mod blog;
 pub mod series;
 
@@ -28,13 +27,4 @@ where
                 .unwrap(),
         }
     }
-}
-
-#[derive(Template)]
-#[template(path = "index.html")]
-struct IndexTemplate {}
-
-pub async fn index_handler() -> Result<impl IntoResponse, AppError> {
-    let template = IndexTemplate {};
-    Ok(HtmlTemplate(template))
 }

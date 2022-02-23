@@ -15,4 +15,4 @@
 - Css color styles are random right now
 - Frontend will probably change a lot; I am not in love with it all
 
-##### Version: `0.4.1` [not in production]
+##### Version: `0.5.0` [not in production]

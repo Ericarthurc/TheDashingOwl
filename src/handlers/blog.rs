@@ -11,7 +11,7 @@ use crate::{
 use super::HtmlTemplate;
 
 #[derive(Template)]
-#[template(path = "blog_index.html")]
+#[template(path = "index.html")]
 struct BlogIndexTemplate {
     blog_index: Vec<Meta>,
 }
@@ -25,7 +25,7 @@ pub async fn blog_index_handler() -> Result<impl IntoResponse, AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "blog.html")]
+#[template(path = "blog_post.html")]
 struct BlogTemplate {
     markdown: String,
     meta: Meta,
@@ -34,12 +34,16 @@ struct BlogTemplate {
 pub async fn blog_handler(
     Path(params): Path<HashMap<String, String>>,
 ) -> Result<impl IntoResponse, AppError> {
-    let blog = params.get("blog").unwrap();
-
-    let (meta, mark) = get_meta_and_markdown(blog).await?;
-    let template = BlogTemplate {
-        markdown: mark,
-        meta,
-    };
-    Ok(HtmlTemplate(template))
+    let blog = params.get("blog");
+    match blog {
+        Some(blog) => {
+            let (meta, mark) = get_meta_and_markdown(blog).await?;
+            let template = BlogTemplate {
+                markdown: mark,
+                meta,
+            };
+            Ok(HtmlTemplate(template))
+        }
+        None => Err(AppError::Param(String::from("missing parameter"))),
+    }
 }

@@ -5,12 +5,14 @@ use serde_json::json;
 #[derive(Debug)]
 pub enum AppError {
     Io(std::io::Error),
+    Param(String),
 }
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
         let (status, error_message) = match self {
             AppError::Io(error) => (StatusCode::UNPROCESSABLE_ENTITY, error.to_string()),
+            AppError::Param(error) => (StatusCode::UNPROCESSABLE_ENTITY, error),
         };
 
         let body = Json(json!({ "error": error_message }));
