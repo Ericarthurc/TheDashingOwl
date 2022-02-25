@@ -15,4 +15,4 @@
 - Css color styles are random right now
 - UI 3.0 WIP
 
-##### Version: `0.5.5` [not in production]
+##### Version: `0.5.6` [not in production]
