@@ -12,9 +12,9 @@ head %} {% endblock %} {% block content %} {% include"includes/navbar.html" %}
       </a>
       <div class="info-tags">
         {% for tag in blog.tags %}
-        <a class="info-tag-anchor" href=""
-          ><span class="info-tag-span">{{ tag }}</span></a
-        >
+        <a class="info-tag-anchor" href="/">
+          <span class="info-tag-span">{{ tag }}</span>
+        </a>
         {% endfor %}
       </div>
     </div>
