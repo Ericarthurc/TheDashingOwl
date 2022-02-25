@@ -1,23 +1,23 @@
 [package]
-name = "rust-markdown-parser"
-version = "0.5.0"
+name = "the_dashing_owl"
+version = "0.5.5"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tokio = { version = "1.14.0", features = ["full"] }
+tokio = { version = "1.17.0", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-axum = "0.4.3"
+axum = "0.4.6"
 comrak = "0.12.1"
-askama = "0.11.0"
+askama = "0.11.1"
 tower = { version = "0.4.11", features = ["full"] }
 tower-http = { version = "0.2.0", features = ["fs", "trace"] }
 async-fs = "1.5.0"
 tracing = "0.1"
 tracing-subscriber = { version="0.3", features = ["env-filter"] }
-http = "0.2.5"
+http = "0.2.6"
 http-body = "0.4.4"
 chrono = "0.4"
 futures-lite = "1.12.0"

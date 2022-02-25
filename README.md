@@ -13,6 +13,6 @@
 
 - Currently contains dummy markdown for testing
 - Css color styles are random right now
-- Frontend will probably change a lot; I am not in love with it all
+- UI 3.0 WIP
 
-##### Version: `0.5.0` [not in production]
+##### Version: `0.5.5` [not in production]

@@ -58,7 +58,7 @@ async fn main() {
         .nest("/series", series_routes)
         .route("/about", get(about_handler));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 4000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8000));
     println!("Server: {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
