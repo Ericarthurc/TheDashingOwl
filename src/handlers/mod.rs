@@ -7,6 +7,7 @@ use axum::{
 
 pub mod about;
 pub mod blog;
+pub mod category;
 pub mod series;
 
 pub struct HtmlTemplate<T>(T);

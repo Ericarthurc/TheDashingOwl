@@ -17,6 +17,12 @@ pub async fn get_file(file_name: &str) -> Result<String, AppError> {
     Ok(file_content)
 }
 
+pub async fn get_meta_and_markdown(file_name: &str) -> Result<(Meta, String), AppError> {
+    let meta = meta_parser(file_name).await?;
+    let mark = markdown_parser(file_name).await?;
+    Ok((meta, mark))
+}
+
 pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
     let mut meta_vec: Vec<Meta> = vec![];
 
@@ -46,18 +52,34 @@ pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
     Ok(meta_vec)
 }
 
-pub async fn get_series_index_vec() -> Result<Vec<Meta>, AppError> {
-    let mut meta_vec: Vec<Meta> = vec![];
-    Ok(meta_vec)
+pub async fn get_series_index_vec() -> Result<Vec<String>, AppError> {
+    let mut series_vec: Vec<String> = vec![];
+
+    let meta_vec = get_blog_index_vec().await?;
+    meta_vec.iter().for_each(|meta| {
+        if meta.series != "" {
+            series_vec.push(meta.series.to_string())
+        }
+    });
+
+    series_vec.sort();
+    series_vec.dedup();
+
+    Ok(series_vec)
 }
 
-pub async fn get_meta_by_series_vec() -> Result<Vec<Meta>, AppError> {
-    let mut meta_vec: Vec<Meta> = vec![];
-    Ok(meta_vec)
-}
+pub async fn get_meta_by_series_vec(series: &str) -> Result<Vec<Meta>, AppError> {
+    let mut series_meta: Vec<Meta> = vec![];
+    let meta_vec = get_blog_index_vec().await?;
 
-pub async fn get_meta_and_markdown(file_name: &str) -> Result<(Meta, String), AppError> {
-    let meta = meta_parser(file_name).await?;
-    let mark = markdown_parser(file_name).await?;
-    Ok((meta, mark))
+    series_meta = meta_vec
+        .into_iter()
+        .filter(|meta| meta.series == series)
+        .collect();
+
+    if series_meta.len() == 0 {
+        Err(AppError::Empty("empty".to_string()))
+    } else {
+        Ok(series_meta)
+    }
 }

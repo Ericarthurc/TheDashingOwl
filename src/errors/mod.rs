@@ -6,6 +6,7 @@ use serde_json::json;
 pub enum AppError {
     Io(std::io::Error),
     Param(String),
+    Empty(String),
 }
 
 impl IntoResponse for AppError {
@@ -13,6 +14,7 @@ impl IntoResponse for AppError {
         let (status, error_message) = match self {
             AppError::Io(error) => (StatusCode::UNPROCESSABLE_ENTITY, error.to_string()),
             AppError::Param(error) => (StatusCode::UNPROCESSABLE_ENTITY, error),
+            AppError::Empty(error) => (StatusCode::UNPROCESSABLE_ENTITY, error),
         };
 
         let body = Json(json!({ "error": error_message }));

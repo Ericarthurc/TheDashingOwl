@@ -55,6 +55,7 @@ async fn main() {
         )
         .route("/", get(blog_index_handler))
         .route("/blog/:blog", get(blog_handler))
+        // .route("/category/:category", get())
         .nest("/series", series_routes)
         .route("/about", get(about_handler));
 
