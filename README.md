@@ -12,7 +12,6 @@
 ### WIP
 
 - Currently contains dummy markdown for testing
-- Css color styles are random right now
-- UI 3.0 WIP
+- UI 3.0
 
 ##### Version: `0.5.7` [not in production]
