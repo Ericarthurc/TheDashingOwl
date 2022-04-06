@@ -8,6 +8,7 @@ use std::net::SocketAddr;
 use crate::handlers::{
     about::about_handler,
     blog::{blog_handler, blog_index_handler},
+    category::category_handler,
     series::{series_handler, series_index_handler},
 };
 
@@ -55,7 +56,7 @@ async fn main() {
         )
         .route("/", get(blog_index_handler))
         .route("/blog/:blog", get(blog_handler))
-        // .route("/category/:category", get())
+        .route("/category/:category", get(category_handler))
         .nest("/series", series_routes)
         .route("/about", get(about_handler));
 

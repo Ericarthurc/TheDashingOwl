@@ -1,4 +1,5 @@
 use async_fs;
+use axum::response::Response;
 use chrono::NaiveDate;
 use futures_lite::stream::StreamExt;
 
@@ -81,5 +82,21 @@ pub async fn get_meta_by_series_vec(series: &str) -> Result<Vec<Meta>, AppError>
         Err(AppError::Empty("empty".to_string()))
     } else {
         Ok(series_meta)
+    }
+}
+
+pub async fn get_meta_by_category_vec(category: &str) -> Result<Vec<Meta>, AppError> {
+    let mut category_meta: Vec<Meta> = vec![];
+    let meta_vec = get_blog_index_vec().await?;
+
+    category_meta = meta_vec
+        .into_iter()
+        .filter(|meta| meta.tags.contains(&category.to_string()))
+        .collect();
+
+    if category_meta.len() == 0 {
+        Err(AppError::Empty("empty".to_string()))
+    } else {
+        Ok(category_meta)
     }
 }

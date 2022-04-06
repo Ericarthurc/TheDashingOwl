@@ -2,17 +2,17 @@
 %} {% endblock %} {% block content %} {% include"includes/navbar.html" %}
 <div class="main-container">
   <p class="main-header">{{series}} Series</p>
-  <ul class="index-list">
+  <div class="index-list">
     {% for series in series_meta %}
-    <li>
+    <div class="main_blog-post">
       <a class="list-anchor" href="/blog/{{series.file_name}}">
         <div class="list-anchor__info">
           <span class="info-title"> {{series.title}} </span>
           <span class="info-date"> {{series.date}} </span>
         </div>
       </a>
-    </li>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
 {% endblock %}

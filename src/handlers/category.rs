@@ -1,8 +1,12 @@
 use std::collections::HashMap;
 
 use askama::Template;
+use serde_json::error::Category;
 
-use crate::{errors::AppError, parsers::meta::Meta};
+use crate::{
+    errors::AppError,
+    parsers::{get_meta_by_category_vec, meta::Meta},
+};
 
 use super::HtmlTemplate;
 use axum::{extract::Path, response::IntoResponse};
@@ -18,5 +22,11 @@ pub async fn category_handler(
 ) -> Result<impl IntoResponse, AppError> {
     let category = params.get("category").unwrap();
 
-    Ok(())
+    let category_meta = get_meta_by_category_vec(category).await?;
+
+    let template = CategoryTemplate {
+        category: category.clone(),
+        category_index: category_meta,
+    };
+    Ok(HtmlTemplate(template))
 }
