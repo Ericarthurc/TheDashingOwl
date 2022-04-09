@@ -7,13 +7,29 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2022-04-09
+
+### Added
+
+- The intro markdown post
+
+### Changed
+
+- Site moving to `Beta` production
+- Adjusted blog header colors
+- Adjusted blog-index sizing
+
+### Removed
+
+- All the dummy markdown files
+
 ## [0.7.0] - 2022-04-05
 
 ### Changed
 
 - Updated to axum `0.5.1`
 - Finished meta parser for `category`
-- Updated html/css on `/series` and `category` to match main index for now   
+- Updated html/css on `/series` and `category` to match main index for now
 
 ## [0.6.0] - 2022-03-20
 

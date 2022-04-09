@@ -117,18 +117,12 @@ code.hljs {
 }
 
 @media screen and (max-width: 1300px) {
-  code.hljs {
-    font-size: 12px;
-  }
   .blog-container {
     margin: 0 10%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  code.hljs {
-    font-size: 10px;
-  }
   .blog-container {
     margin: 0 5%;
     font-size: 15px;
