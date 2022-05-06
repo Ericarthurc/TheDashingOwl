@@ -7,6 +7,14 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] - 2022-05-06
+### - Will not compile
+
+### Changed
+
+- Updated packages
+- tower-http 3 update broke the fallback handler 
+
 ## [0.7.1] - 2022-04-09
 
 ### Added

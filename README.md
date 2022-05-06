@@ -14,4 +14,4 @@
 - Currently contains dummy markdown for testing
 - UI 3.0
 
-##### Version: `0.7.1` [in beta]
+##### Version: `0.7.2` [in beta] [broken]
