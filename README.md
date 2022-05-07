@@ -9,9 +9,4 @@
 
 #### Please feel free to dive through this code to help with your projects
 
-### WIP
-
-- Currently contains dummy markdown for testing
-- UI 3.0
-
-##### Version: `0.7.2` [in beta] [broken]
+##### Version: `0.8.0` [in beta] [ui 3.0]

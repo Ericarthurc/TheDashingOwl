@@ -1,7 +1,7 @@
 {% extends "partials/head.html" %} {% block title %}{% endblock %} {% block head
 %}
-<link rel="stylesheet" href="/styles/markdown.css" />
-<script src="/js/highlight.min.js"></script>
+<link rel="stylesheet" href="/public/styles/markdown.css" />
+<script src="/public/js/highlight.min.js"></script>
 {% endblock %} {% block content %} {% include"includes/navbar.html" %}
 <div class="blog-container">
   {{markdown|safe}}

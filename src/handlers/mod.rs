@@ -10,7 +10,7 @@ pub mod blog;
 pub mod category;
 pub mod series;
 
-pub struct HtmlTemplate<T>(T);
+pub struct HtmlTemplate<T>(pub T);
 
 impl<T> IntoResponse for HtmlTemplate<T>
 where
