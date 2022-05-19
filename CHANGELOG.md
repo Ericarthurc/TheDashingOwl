@@ -7,6 +7,13 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.6] - 2022-05-18
+
+### Changed
+
+- `/public/js/theme.js` | moved script to execute at the bottom on `<body>` and moved the logic out of DOM load event; allows for quicker execution of the localStorage check
+- Adjusted some of the css styling; the 'light' theme still needs to be done correctly [wip]
+
 ## [0.8.5] - 2022-05-18
 
 ### Added
@@ -17,8 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updated cargo packges 
-
+- Updated cargo packges
 
 ## [0.8.0] - 2022-05-06
 
@@ -37,12 +43,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - tower-http fallback route
 
 ## [0.7.2] - 2022-05-06
+
 ### - Will not compile
 
 ### Changed
 
 - Updated packages
-- tower-http 3 update broke the fallback handler 
+- tower-http 3 update broke the fallback handler
 
 ## [0.7.1] - 2022-04-09
 

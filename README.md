@@ -9,4 +9,4 @@
 
 #### Please feel free to dive through this code to help with your projects
 
-##### Version: `0.8.5` [in beta] [ui 3.0]
+##### Version: `0.8.6` [in beta] [ui 3.0]
