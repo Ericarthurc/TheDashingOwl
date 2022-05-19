@@ -7,6 +7,19 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.5] - 2022-05-18
+
+### Added
+
+- `/public/js/theme.js` | JavaScript handler for getting/setting localStorage key `data-theme`
+- `/templates/inclues/theme_switcher.html`
+- Added css implementation for theme switcher input [wip] [transitions cause flashing on load]
+
+### Changed
+
+- Updated cargo packges 
+
+
 ## [0.8.0] - 2022-05-06
 
 ### Added
