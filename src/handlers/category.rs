@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 
 use askama::Template;
-use serde_json::error::Category;
 
 use crate::{
     errors::AppError,

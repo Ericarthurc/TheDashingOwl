@@ -1,17 +1,13 @@
 use askama::Template;
 use axum::{
-    body,
     handler::Handler,
-    http::header::CONTENT_TYPE,
-    http::{Response, StatusCode},
+    http::StatusCode,
     response::IntoResponse,
     routing::{get, get_service},
     Router,
 };
 use handlers::HtmlTemplate;
 use std::net::SocketAddr;
-
-use prometheus::{Encoder, TextEncoder};
 
 use crate::handlers::{
     about::about_handler,
@@ -52,7 +48,6 @@ async fn main() {
                 },
             ),
         )
-        // .route("/metrics", get(metrics))
         .route("/", get(blog_index_handler))
         .route("/blog/:blog", get(blog_handler))
         .route("/category/:category", get(category_handler))
@@ -86,16 +81,3 @@ async fn handler_404() -> impl IntoResponse {
     let template = NotFoundTemplate {};
     HtmlTemplate(template)
 }
-
-// Not ready for production
-// async fn metrics() -> impl IntoResponse {
-//     let encoder = TextEncoder::new();
-//     let metric_families = prometheus::gather();
-//     let mut buffer = vec![];
-//     encoder.encode(&metric_families, &mut buffer).unwrap();
-//     Response::builder()
-//         .status(200)
-//         .header(CONTENT_TYPE, encoder.format_type())
-//         .body(body::boxed(body::Full::from(buffer)))
-//         .unwrap()
-// }

@@ -1,5 +1,4 @@
 use async_fs;
-use axum::response::Response;
 use chrono::NaiveDate;
 use futures_lite::stream::StreamExt;
 
@@ -11,7 +10,7 @@ use self::parsers::{markdown_parser, meta_parser};
 pub mod meta;
 pub mod parsers;
 
-pub async fn get_file(file_name: &str) -> Result<String, AppError> {
+pub async fn get_file_contents(file_name: &str) -> Result<String, AppError> {
     let file_content =
         async_fs::read_to_string(format!("./markdown/{}.markdown", file_name)).await?;
 
@@ -19,8 +18,10 @@ pub async fn get_file(file_name: &str) -> Result<String, AppError> {
 }
 
 pub async fn get_meta_and_markdown(file_name: &str) -> Result<(Meta, String), AppError> {
-    let meta = meta_parser(file_name).await?;
-    let mark = markdown_parser(file_name).await?;
+    let file_contents = get_file_contents(file_name).await?;
+    let meta = meta_parser(&file_contents, file_name).await?;
+    let mark = markdown_parser(&file_contents).await?;
+
     Ok((meta, mark))
 }
 
@@ -30,18 +31,16 @@ pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
     let mut files = async_fs::read_dir("./markdown").await?;
 
     while let Some(file) = files.next().await {
-        meta_vec.push(
-            meta_parser(
-                file.unwrap()
-                    .file_name()
-                    .to_str()
-                    .unwrap()
-                    .to_string()
-                    .split(".markdown")
-                    .collect::<Vec<&str>>()[0],
-            )
-            .await?,
-        );
+        let file_name = &file
+            .unwrap()
+            .file_name()
+            .to_str()
+            .unwrap()
+            .to_string()
+            .split(".markdown")
+            .collect::<Vec<&str>>()[0]
+            .to_string();
+        meta_vec.push(meta_parser(&get_file_contents(&file_name).await?, &file_name).await?);
     }
 
     meta_vec.sort_by(|a, b| {
@@ -70,7 +69,7 @@ pub async fn get_series_index_vec() -> Result<Vec<String>, AppError> {
 }
 
 pub async fn get_meta_by_series_vec(series: &str) -> Result<Vec<Meta>, AppError> {
-    let mut series_meta: Vec<Meta> = vec![];
+    let series_meta: Vec<Meta>;
     let meta_vec = get_blog_index_vec().await?;
 
     series_meta = meta_vec
@@ -86,7 +85,7 @@ pub async fn get_meta_by_series_vec(series: &str) -> Result<Vec<Meta>, AppError>
 }
 
 pub async fn get_meta_by_category_vec(category: &str) -> Result<Vec<Meta>, AppError> {
-    let mut category_meta: Vec<Meta> = vec![];
+    let category_meta: Vec<Meta>;
     let meta_vec = get_blog_index_vec().await?;
 
     category_meta = meta_vec

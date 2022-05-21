@@ -8,10 +8,10 @@ pub struct Meta {
 }
 
 impl Meta {
-    pub fn new(file: &str, file_name: &str) -> Self {
+    pub fn new(file_contents: &str, file_name: &str) -> Self {
         let mut meta = Meta::default();
 
-        let raw_meta: Vec<String> = file
+        let raw_meta: Vec<String> = file_contents
             .split("---")
             .nth(1)
             .unwrap()

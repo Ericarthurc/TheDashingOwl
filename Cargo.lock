@@ -1400,7 +1400,7 @@ dependencies = [
 
 [[package]]
 name = "the_dashing_owl"
-version = "0.8.6"
+version = "0.8.7"
 dependencies = [
  "askama",
  "async-fs",
