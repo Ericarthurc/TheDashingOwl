@@ -10,9 +10,12 @@ use self::parsers::{markdown_parser, meta_parser};
 pub mod meta;
 pub mod parsers;
 
+const BLOGEXTENSION: &str = "md";
+const BLOGFOLDER: &str = "blog_posts";
+
 pub async fn get_file_contents(file_name: &str) -> Result<String, AppError> {
     let file_content =
-        async_fs::read_to_string(format!("./markdown/{}.markdown", file_name)).await?;
+        async_fs::read_to_string(format!("./{BLOGFOLDER}/{}.{BLOGEXTENSION}", file_name)).await?;
 
     Ok(file_content)
 }
@@ -28,7 +31,7 @@ pub async fn get_meta_and_markdown(file_name: &str) -> Result<(Meta, String), Ap
 pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
     let mut meta_vec: Vec<Meta> = vec![];
 
-    let mut files = async_fs::read_dir("./markdown").await?;
+    let mut files = async_fs::read_dir(format!("./{BLOGFOLDER}")).await?;
 
     while let Some(file) = files.next().await {
         let file_name = &file
@@ -37,7 +40,7 @@ pub async fn get_blog_index_vec() -> Result<Vec<Meta>, AppError> {
             .to_str()
             .unwrap()
             .to_string()
-            .split(".markdown")
+            .split(format!(".{BLOGEXTENSION}").as_str())
             .collect::<Vec<&str>>()[0]
             .to_string();
         meta_vec.push(meta_parser(&get_file_contents(&file_name).await?, &file_name).await?);
