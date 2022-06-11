@@ -6,11 +6,7 @@ use comrak::{markdown_to_html, ComrakOptions};
 pub async fn markdown_parser(file_contents: &String) -> Result<String, AppError> {
     let mut options = ComrakOptions::default();
     options.extension.autolink = true;
-    options.extension.table = true;
-    options.extension.description_lists = true;
-    options.extension.superscript = true;
-    options.extension.strikethrough = true;
-    options.extension.footnotes = true;
+    options.extension.header_ids = Some(String::from(""));
     options.extension.front_matter_delimiter = Some("---".to_owned());
     options.render.unsafe_ = true;
 

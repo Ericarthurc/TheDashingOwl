@@ -37,7 +37,28 @@
 
   <body>
     {% block content %}{% endblock %}
-    <script src="/public/js/theme.js"></script>
+    <!-- <script>
+      let theme = localStorage.getItem('theme');
+      let themeSwitcherInput = document.querySelector('#themeSwitch');
+
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeSwitcherInput.checked = false;
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeSwitcherInput.checked = true;
+      }
+
+      themeSwitcherInput.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      });
+    </script> -->
     <script async>
       console.log(`%cSite Version: 0.8.8`, 'color: #FB6300');
     </script>
