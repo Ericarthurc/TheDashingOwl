@@ -7,6 +7,21 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2022-06-12
+
+### Added
+
+- Owl svg logo
+
+### Changed
+
+- A lot of color design was changed
+- Moved tags out of main anchor tag | will probably get changed again
+
+### Removed
+
+- Theme switcher was removed for now as its very WIP | all the pieces are there just need some work frontend work
+
 ## [0.8.8] - 2022-05-25
 
 ### Changed
