@@ -59,17 +59,9 @@ body {
 
 .navbar {
   display: flex;
-  width: 100%;
   height: 75px;
   margin-top: 25px;
   margin-bottom: 10px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-container {
-  display: flex;
   gap: 15px;
   align-items: center;
   justify-content: center;
@@ -84,6 +76,7 @@ body {
 
 .navbar-title-logo {
   height: 75px;
+  width: 49px;
 }
 
 .navbar-title-logo svg:hover {}
@@ -327,13 +320,31 @@ body {
   .list-anchor {
     width: 300px;
   }
-
-  /* .main_blog-post {
-    width: 100%;
-  } */
 }
 
+/* ----------------- browsers that dont support flex gap ---------------------- */
 
+@supports (-webkit-touch-callout: none) and (not (translate: none)) {
+  .navbar-link {
+    margin-left: 15px;
+  }
+
+  .index-container:not(:last-child) {
+    margin-right: 1.25rem;
+  }
+
+  .info-tag-anchor:not(:last-child) {
+    margin-right: 6px;
+  }
+
+  .info-tags {
+    margin-top: 0px;
+  }
+
+  .info-tag-anchor {
+    margin-top: 6px;
+  }
+}
 
 /* -------------------- MARKDOWN ---------------------- */
 .blog-container {
