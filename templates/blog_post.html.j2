@@ -1,0 +1,17 @@
+{% extends "partials/head.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+<script src="/public/js/highlight.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="blog-container">
+  {{markdown|safe}}
+  <p class="tags">Tags: {% for tag in meta.tags %} `{{ tag }}` {% endfor %}</p>
+</div>
+<script>
+  hljs.highlightAll();
+</script>
+{% endblock %}

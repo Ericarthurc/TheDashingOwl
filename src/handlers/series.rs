@@ -11,7 +11,7 @@ use crate::{
 use super::HtmlTemplate;
 
 #[derive(Template)]
-#[template(path = "series_index.html")]
+#[template(path = "series_index.html.j2")]
 struct SeriesIndexTemplate {
     series_index: Vec<String>,
 }
@@ -24,7 +24,7 @@ pub async fn series_index_handler() -> Result<impl IntoResponse, AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "series.html")]
+#[template(path = "series.html.j2")]
 struct SeriesTemplate {
     series: String,
     series_meta: Vec<Meta>,

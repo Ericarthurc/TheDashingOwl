@@ -5,7 +5,7 @@ use askama::Template;
 use axum::response::IntoResponse;
 
 #[derive(Template)]
-#[template(path = "about.html")]
+#[template(path = "about.html.j2")]
 struct AboutTemplate {}
 
 pub async fn about_handler() -> Result<impl IntoResponse, AppError> {

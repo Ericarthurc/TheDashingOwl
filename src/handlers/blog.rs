@@ -11,7 +11,7 @@ use crate::{
 use super::HtmlTemplate;
 
 #[derive(Template)]
-#[template(path = "index.html")]
+#[template(path = "index.html.j2")]
 struct BlogIndexTemplate {
     blog_index: Vec<Meta>,
 }
@@ -25,7 +25,7 @@ pub async fn blog_index_handler() -> Result<impl IntoResponse, AppError> {
 }
 
 #[derive(Template)]
-#[template(path = "blog_post.html")]
+#[template(path = "blog_post.html.j2")]
 struct BlogTemplate {
     markdown: String,
     meta: Meta,

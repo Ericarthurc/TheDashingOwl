@@ -75,7 +75,7 @@ async fn main() {
 }
 
 #[derive(Template)]
-#[template(path = "not_found.html")]
+#[template(path = "not_found.html.j2")]
 struct NotFoundTemplate {}
 async fn handler_404() -> impl IntoResponse {
     let template = NotFoundTemplate {};

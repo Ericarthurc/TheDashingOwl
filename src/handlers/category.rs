@@ -11,7 +11,7 @@ use super::HtmlTemplate;
 use axum::{extract::Path, response::IntoResponse};
 
 #[derive(Template)]
-#[template(path = "category.html")]
+#[template(path = "category.html.j2")]
 struct CategoryTemplate {
     category: String,
     category_index: Vec<Meta>,
