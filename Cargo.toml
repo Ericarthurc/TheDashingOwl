@@ -21,4 +21,6 @@ http = "0.2"
 http-body = "0.4"
 chrono = "0.4"
 futures-lite = "1.12"
-prometheus = { version = "0.13", default-features = false, features = ["process"] }
+dotenv = "0.15.0"
+tower-cookies = "0.7"
+jsonwebtoken = "8"

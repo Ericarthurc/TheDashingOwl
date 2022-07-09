@@ -1,14 +1,12 @@
-use std::collections::HashMap;
-
 use askama::Template;
 use axum::{extract::Path, response::IntoResponse};
+use std::collections::HashMap;
 
+use super::HtmlTemplate;
 use crate::{
     errors::AppError,
     parsers::{get_blog_index_vec, get_meta_and_markdown, meta::Meta},
 };
-
-use super::HtmlTemplate;
 
 #[derive(Template)]
 #[template(path = "index.html.j2")]

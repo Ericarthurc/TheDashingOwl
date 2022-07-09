@@ -1,8 +1,8 @@
-use crate::errors::AppError;
-
-use super::HtmlTemplate;
 use askama::Template;
 use axum::response::IntoResponse;
+
+use super::HtmlTemplate;
+use crate::errors::AppError;
 
 #[derive(Template)]
 #[template(path = "about.html.j2")]

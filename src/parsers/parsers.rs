@@ -1,7 +1,7 @@
-use crate::errors::AppError;
+use comrak::{markdown_to_html, ComrakOptions};
 
 use super::meta::Meta;
-use comrak::{markdown_to_html, ComrakOptions};
+use crate::errors::AppError;
 
 pub async fn markdown_parser(file_contents: &String) -> Result<String, AppError> {
     let mut options = ComrakOptions::default();

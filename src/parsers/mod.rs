@@ -2,10 +2,9 @@ use async_fs;
 use chrono::NaiveDate;
 use futures_lite::stream::StreamExt;
 
-use crate::errors::AppError;
-
 use self::meta::Meta;
 use self::parsers::{markdown_parser, meta_parser};
+use crate::errors::AppError;
 
 pub mod meta;
 pub mod parsers;

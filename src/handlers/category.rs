@@ -1,14 +1,12 @@
+use askama::Template;
+use axum::{extract::Path, response::IntoResponse};
 use std::collections::HashMap;
 
-use askama::Template;
-
+use super::HtmlTemplate;
 use crate::{
     errors::AppError,
     parsers::{get_meta_by_category_vec, meta::Meta},
 };
-
-use super::HtmlTemplate;
-use axum::{extract::Path, response::IntoResponse};
 
 #[derive(Template)]
 #[template(path = "category.html.j2")]

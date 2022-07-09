@@ -6,24 +6,27 @@ use axum::{
     routing::{get, get_service},
     Router,
 };
-use handlers::HtmlTemplate;
-use std::net::SocketAddr;
+use dotenv::dotenv;
+use std::{env, net::SocketAddr};
+use tower_http::services::{fs::ServeDir, ServeFile};
 
 use crate::handlers::{
     about::about_handler,
     blog::{blog_handler, blog_index_handler},
     category::category_handler,
     series::{series_handler, series_index_handler},
+    HtmlTemplate,
 };
-
-use tower_http::services::{fs::ServeDir, ServeFile};
 
 mod errors;
 mod handlers;
 mod parsers;
+mod utilities;
 
 #[tokio::main]
 async fn main() {
+    dotenv().ok();
+
     let app = Router::new()
         .fallback(handler_404.into_service())
         .route(
@@ -66,7 +69,10 @@ async fn main() {
             ),
         );
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], 8000));
+    let addr = SocketAddr::from((
+        [0, 0, 0, 0],
+        env::var("HTTP_PORT").unwrap().parse::<u16>().unwrap(),
+    ));
     println!("Server: {}", addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
