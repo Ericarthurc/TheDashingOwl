@@ -6,6 +6,7 @@ use axum::{
 };
 
 pub mod about;
+pub mod admin;
 pub mod blog;
 pub mod category;
 pub mod series;

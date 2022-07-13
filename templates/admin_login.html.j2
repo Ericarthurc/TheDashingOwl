@@ -1,0 +1,23 @@
+{% extends "partials/head.html.j2" %}
+
+{% block title %}{% endblock %}
+
+{% block head%} {% endblock %}
+
+{% block content %}
+<h3>Admin Login</h3>
+<form id="adminLoginForm">
+    <label for="username">
+        Username:
+        <input type="text" name="username">
+    </label>
+
+    <label for="password">
+        Password:
+        <input type="password" name="password">
+    </label>
+
+    <input type="submit">
+</form>
+<script src="/public/js/admin.js"></script>
+{% endblock %}

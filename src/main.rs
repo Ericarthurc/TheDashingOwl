@@ -8,10 +8,12 @@ use axum::{
 };
 use dotenv::dotenv;
 use std::{env, net::SocketAddr};
+use tower_cookies::CookieManagerLayer;
 use tower_http::services::{fs::ServeDir, ServeFile};
 
 use crate::handlers::{
     about::about_handler,
+    admin::{admin_handler, admin_login_consumer_handler, admin_login_handler},
     blog::{blog_handler, blog_index_handler},
     category::category_handler,
     series::{series_handler, series_index_handler},
@@ -26,6 +28,11 @@ mod utilities;
 #[tokio::main]
 async fn main() {
     dotenv().ok();
+
+    let admin_routes = Router::new().route("/", get(admin_handler)).route(
+        "/login",
+        get(admin_login_handler).post(admin_login_consumer_handler),
+    );
 
     let app = Router::new()
         .fallback(handler_404.into_service())
@@ -57,6 +64,8 @@ async fn main() {
         .route("/series", get(series_index_handler))
         .route("/series/:series", get(series_handler))
         .route("/about", get(about_handler))
+        .nest("/admin", admin_routes)
+        .layer(CookieManagerLayer::new())
         .nest(
             "/public",
             get_service(ServeDir::new("./public/")).handle_error(
