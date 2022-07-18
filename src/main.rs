@@ -3,7 +3,7 @@ use axum::{
     handler::Handler,
     http::StatusCode,
     response::IntoResponse,
-    routing::{get, get_service},
+    routing::{get, get_service, post},
     Router,
 };
 use dotenv::dotenv;
@@ -13,7 +13,7 @@ use tower_http::services::{fs::ServeDir, ServeFile};
 
 use crate::handlers::{
     about::about_handler,
-    admin::{admin_handler, admin_login_consumer_handler, admin_login_handler},
+    admin::{admin_handler, admin_login_handler},
     blog::{blog_handler, blog_index_handler},
     category::category_handler,
     series::{series_handler, series_index_handler},
@@ -29,10 +29,9 @@ mod utilities;
 async fn main() {
     dotenv().ok();
 
-    let admin_routes = Router::new().route("/", get(admin_handler)).route(
-        "/login",
-        get(admin_login_handler).post(admin_login_consumer_handler),
-    );
+    let admin_routes = Router::new()
+        .route("/", get(admin_handler))
+        .route("/login", post(admin_login_handler));
 
     let app = Router::new()
         .fallback(handler_404.into_service())

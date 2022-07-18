@@ -16,15 +16,6 @@ pub async fn admin_handler() -> Result<impl IntoResponse, AppError> {
     Ok(HtmlTemplate(template))
 }
 
-#[derive(Template)]
-#[template(path = "admin_login.html.j2")]
-struct AdminLoginTemplate {}
-
-pub async fn admin_login_handler() -> Result<Response, AppError> {
-    let template = AdminLoginTemplate {};
-    Ok(HtmlTemplate(template).into_response())
-}
-
 #[derive(Serialize, Deserialize, Debug)]
 #[allow(dead_code)]
 pub struct LoginInput {
@@ -32,10 +23,13 @@ pub struct LoginInput {
     password: String,
 }
 
-pub async fn admin_login_consumer_handler(
+pub async fn admin_login_handler(
     extract::Json(login_payload): extract::Json<LoginInput>,
     cookies: Cookies,
 ) -> Result<Response, AppError> {
     println!("{:?}", login_payload);
+    if login_payload.password == "password1234" {
+        return Ok((StatusCode::OK).into_response());
+    }
     Ok((StatusCode::FORBIDDEN).into_response())
 }
