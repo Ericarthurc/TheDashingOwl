@@ -37,30 +37,8 @@
   {% include"includes/navbar.html.j2" %}
   {# {% include"includes/theme_switcher.html.j2" %} #}
   {% block content %}{% endblock %}
-  {# <script>
-      let theme = localStorage.getItem('theme');
-      let themeSwitcherInput = document.querySelector('#themeSwitch');
-
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeSwitcherInput.checked = false;
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeSwitcherInput.checked = true;
-      }
-
-      themeSwitcherInput.addEventListener('change', (event) => {
-        if (event.target.checked) {
-          localStorage.setItem('theme', 'dark');
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          localStorage.setItem('theme', 'light');
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      });
-    </script> #}
   <script async>
-    console.log(`%cSite Version: 0.11.0`, 'color: #FB6300');
+    console.log(`%cSite Version: 0.11.1`, 'color: #FB6300');
   </script>
     {# <script>
         if (!navigator.serviceWorker.controller) {

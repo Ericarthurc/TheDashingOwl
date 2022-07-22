@@ -1,16 +1,30 @@
-import { Fragment, h, hydrate } from 'preact';
+import 'preact/debug';
+import { Fragment, h, render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
+
+import LoginForm from './components/loginForm';
 
 const App = () => {
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 10000);
-  }, []);
+  const loadedHandler = (state: boolean) => {
+    setLoaded(state);
+  };
 
-  return <Fragment>{loaded && <div>Loaded</div>}</Fragment>;
+  return (
+    <Fragment>
+      {!loaded && (
+        <div>
+          <LoginForm loadedHandler={loadedHandler} />
+        </div>
+      )}
+      {loaded && (
+        <div>
+          <h1>Admin Page</h1>
+        </div>
+      )}
+    </Fragment>
+  );
 };
 
-hydrate(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
