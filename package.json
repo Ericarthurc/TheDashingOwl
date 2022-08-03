@@ -4,7 +4,8 @@
   "description": "webpack handler",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "dev-build": "webpack",
+    "build": "webpack && cargo build --release"
   },
   "keywords": [],
   "author": "Ericarthurc",
