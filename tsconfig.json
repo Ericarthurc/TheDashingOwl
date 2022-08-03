@@ -6,7 +6,6 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "allowJs": true,
     "moduleResolution": "node"
   }
 }

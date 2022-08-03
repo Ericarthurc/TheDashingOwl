@@ -1,7 +1,9 @@
-{% extends "partials/head.html.j2" %}
+{% extends "./layouts/head.html.j2" %}
 
 {% block title %}{% endblock %}
 
 {% block head%} {% endblock %}
 
-{% block content %} {% endblock %}
+{% block content %}
+  {% include "./includes/navbar.html.j2" %}
+{% endblock %}

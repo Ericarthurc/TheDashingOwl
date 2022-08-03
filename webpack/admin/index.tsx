@@ -1,6 +1,5 @@
-import 'preact/debug';
 import { Fragment, h, render } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 
 import LoginForm from './components/loginForm';
 
@@ -12,18 +11,18 @@ const App = () => {
   };
 
   return (
-    <Fragment>
+    <>
       {!loaded && (
-        <div>
+        <>
           <LoginForm loadedHandler={loadedHandler} />
-        </div>
+        </>
       )}
       {loaded && (
-        <div>
+        <>
           <h1>Admin Page</h1>
-        </div>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

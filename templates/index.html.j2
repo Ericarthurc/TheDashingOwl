@@ -1,29 +1,30 @@
-{% extends "partials/head.html.j2" %}
+{% extends "./layouts/head.html.j2" %}
 
 {% block title %}{% endblock %}
 
 {% block head %}{% endblock %}
 
 {% block content %}
-<div class="main-container">
-  <div class="index-list">
-    {% for blog in blog_index %}
-    <div class="index-container">
-      <a class="list-anchor" href="/blog/{{blog.file_name}}">
-        <div class="list-anchor__info">
-          <span class="info-title"> {{ blog.title }} </span>
-          <span class="info-date"> {{ blog.date }} </span>
-        </div>
-      </a>
-      <div class="info-tags">
-        {% for tag in blog.tags %}
-        <a class="info-tag-anchor" href="/category/{{tag}}">
-          <span class="info-tag-span">{{ tag }}</span>
+  {% include "./includes/navbar.html.j2" %}
+  <div class="main-container">
+    <div class="index-list">
+      {% for blog in blog_index %}
+      <div class="index-container">
+        <a class="list-anchor" href="/blog/{{blog.file_name}}">
+          <div class="list-anchor__info">
+            <span class="info-title"> {{ blog.title }} </span>
+            <span class="info-date"> {{ blog.date }} </span>
+          </div>
         </a>
-        {% endfor %}
+        <div class="info-tags">
+          {% for tag in blog.tags %}
+          <a class="info-tag-anchor" href="/category/{{tag}}">
+            <span class="info-tag-span">{{ tag }}</span>
+          </a>
+          {% endfor %}
+        </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
 {% endblock %}

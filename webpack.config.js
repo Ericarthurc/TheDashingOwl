@@ -10,7 +10,12 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['@babel/typescript', { jsxPragma: 'h' }]],
+              presets: [
+                [
+                  '@babel/typescript',
+                  { jsxPragma: 'h', jsxPragmaFrag: 'Fragment' },
+                ],
+              ],
               plugins: [
                 [
                   '@babel/plugin-transform-react-jsx',

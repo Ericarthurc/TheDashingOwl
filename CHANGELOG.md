@@ -7,6 +7,16 @@ Addition of markdown posts will not be versioned or require a changelog update.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2022-08-02
+
+## Added
+
+- added cloudflare front-end analytics | probably will get blocked by a lot of clients though
+
+## Changed
+
+- continued fine tuning of the webpack workflow
+
 ## [0.11.1] - 2022-07-22
 
 ## Added

@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { Fragment, h } from 'preact';
 import { useState } from 'preact/hooks';
 import axios from 'axios';
 
@@ -24,7 +24,7 @@ const LoginForm = (props: Props) => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={loginFormHandler}>
         <label htmlFor="username">
           Username:
@@ -54,7 +54,7 @@ const LoginForm = (props: Props) => {
 
         <input type="submit"></input>
       </form>
-    </div>
+    </>
   );
 };
 

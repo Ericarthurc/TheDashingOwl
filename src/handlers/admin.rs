@@ -27,7 +27,7 @@ pub async fn admin_login_handler(
     extract::Json(login_payload): extract::Json<LoginInput>,
     cookies: Cookies,
 ) -> Result<Response, AppError> {
-    println!("{:?}", login_payload);
+    // println!("{:?}", login_payload);
     if login_payload.password == "password1234" {
         return Ok((StatusCode::OK).into_response());
     }
